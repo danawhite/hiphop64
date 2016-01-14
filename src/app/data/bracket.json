@@ -1,0 +1,101 @@
+{
+  "Bracket": {
+    "East": {
+      "firstRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": [],
+        "pod5": [],
+        "pod6": [],
+        "pod7": [],
+        "pod8": []
+      },
+      "secondRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": []
+      },
+      "sweet16": {
+        "pod1": [],
+        "pod2": []
+      },
+      "eliteEight": {
+        "pod1": []
+      }
+    },
+    "West": {},
+    "firstRound": {
+      "secondRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": []
+      },
+      "sweet16": {
+        "pod1": [],
+        "pod2": []
+      },
+      "eliteEight": {
+        "pod1": []
+      }
+    },
+    "Midwest": {
+      "firstRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": [],
+        "pod5": [],
+        "pod6": [],
+        "pod7": [],
+        "pod8": []
+      },
+      "secondRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": []
+      },
+      "sweet16": {
+        "pod1": [],
+        "pod2": []
+      },
+      "eliteEight": {
+        "pod1": []
+      }
+    },
+    "South": {
+      "firstRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": [],
+        "pod5": [],
+        "pod6": [],
+        "pod7": [],
+        "pod8": []
+      },
+      "secondRound": {
+        "pod1": [],
+        "pod2": [],
+        "pod3": [],
+        "pod4": []
+      },
+      "sweet16": {
+        "pod1": [],
+        "pod2": []
+      },
+      "eliteEight": {
+        "pod1": []
+      }
+    },
+    "FinalFour": {
+      "pod1": [],
+      "pod2": []
+    },
+    "Championship": [],
+    "Champion": []
+  }
+}
