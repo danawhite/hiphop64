@@ -1,99 +1,100 @@
 {
   "Bracket": {
     "East": {
-      "firstRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": [],
-        "pod5": [],
-        "pod6": [],
-        "pod7": [],
-        "pod8": []
+      "lane01": {
+        "matchup01": [1, 16],
+        "matchup02": [8.9],
+        "matchup03": [5, 12],
+        "matchup04": [4, 13],
+        "matchup05": [6, 11],
+        "matchup06": [3, 14],
+        "matchup07": [7, 10],
+        "matchup08": [2, 15]
       },
       "secondRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": []
+        "matchup01": [],
+        "matchup02": [],
+        "matchup03": [],
+        "matchup04": []
       },
       "sweet16": {
-        "pod1": [],
-        "pod2": []
+        "matchup01": [],
+        "matchup02": []
       },
       "eliteEight": {
-        "pod1": []
+        "matchup01": []
       }
     },
-    "West": {},
-    "firstRound": {
-      "secondRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": []
+    "West": {
+      "firstRound": {
+        "secondRound": {
+          "matchup01": [],
+          "matchup02": [],
+          "matchup03": [],
+          "matchup04": []
+        },
+        "sweet16": {
+          "matchup01": [],
+          "matchup02": []
+        },
+        "eliteEight": {
+          "matchup01": []
+        }
       },
-      "sweet16": {
-        "pod1": [],
-        "pod2": []
-      },
-      "eliteEight": {
-        "pod1": []
-      }
     },
     "Midwest": {
       "firstRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": [],
-        "pod5": [],
-        "pod6": [],
-        "pod7": [],
-        "pod8": []
+        "matchup01": [],
+        "matchup02": [],
+        "matchup03": [],
+        "matchup04": [],
+        "matchup05": [],
+        "matchup06": [],
+        "matchup07": [],
+        "matchup08": []
       },
       "secondRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": []
+        "matchup01": [],
+        "matchup02": [],
+        "matchup03": [],
+        "matchup04": []
       },
       "sweet16": {
-        "pod1": [],
-        "pod2": []
+        "matchup01": [],
+        "matchup02": []
       },
       "eliteEight": {
-        "pod1": []
+        "matchup01": []
       }
     },
     "South": {
       "firstRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": [],
-        "pod5": [],
-        "pod6": [],
-        "pod7": [],
-        "pod8": []
+        "matchup01": [],
+        "matchup02": [],
+        "matchup03": [],
+        "matchup04": [],
+        "matchup05": [],
+        "matchup06": [],
+        "matchup07": [],
+        "matchup08": []
       },
       "secondRound": {
-        "pod1": [],
-        "pod2": [],
-        "pod3": [],
-        "pod4": []
+        "matchup01": [],
+        "matchup02": [],
+        "matchup03": [],
+        "matchup04": []
       },
       "sweet16": {
-        "pod1": [],
-        "pod2": []
+        "matchup01": [],
+        "matchup02": []
       },
       "eliteEight": {
-        "pod1": []
+        "matchup01": []
       }
     },
     "FinalFour": {
-      "pod1": [],
-      "pod2": []
+      "matchup01": [],
+      "matchup02": []
     },
     "Championship": [],
     "Champion": []

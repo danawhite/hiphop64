@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "author": "Dana White",
+    "text": "One comment."
+  },
+  {
+    "id": 2,
+    "author": "Joan Rivers",
+    "text": "*Another* comment for you _today_."
+  }
+]
