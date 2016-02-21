@@ -1,8 +1,9 @@
 import React from 'react';
 import Firebase from 'firebase';
 
-import Group from './components/matchup-node/MatchupNode';
-import Matchup from './components/matchup/matchup';
+
+//import Group from './components/matchup-node/MatchupNode'
+//import Matchup from './components/matchup/matchup';
 
 export default class Bracket extends React.Component {
     constructor(props) {
@@ -73,23 +74,23 @@ export default class Bracket extends React.Component {
                 alignItems: 'stretch',
                 justifyContent: 'spaceBetween'
             },
-            quarterfinals: {
+            sixtyFour: {
                 flex: .2,
                 flexDirection: 'column',
                 alignItems: 'stretch',
                 backgroundColor: 'grey',
                 color: '#333'
             },
-            semifinals: {
+            thirtyTwo: {
                 flex: .15,
                 flexDirection: 'column',
-                backgroundColor: 'blue',
+                backgroundColor: 'grey',
                 color: '#333'
             },
             finals: {
                 flex: .3,
                 flexDirection: 'column',
-                backgroundColor: 'cornsilk',
+                backgroundColor: 'grey',
                 color: '#333'
             },
             region: {
@@ -107,6 +108,19 @@ export default class Bracket extends React.Component {
         ref.set({name: 'Dana White'});
     }
 
+    renderRegions() {
+        //regi
+    }
+
+    renderMatchupsForRegion(region) {
+        Regions.filter()
+        return region;
+        return Matchups.filter(matchup => {
+            return matchup[region] === region;
+        })
+
+    }
+
     render() {
         return  (
             <div style={this.style.outer}>
@@ -122,7 +136,7 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.semifinals}>Semifinals
+                    <div style={this.style.sixtyFour}>Semifinals
                         <div style={this.style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
@@ -144,7 +158,7 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.semifinals}>Semifinals
+                    <div style={this.style.thirtyTwo}>Semifinals
                         <div style={this.style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
@@ -155,7 +169,7 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.quarterfinals}>Quarterfinals
+                    <div style={this.style.sixtyFour}>Quarterfinals
                         <div style={this.style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
@@ -167,7 +181,7 @@ export default class Bracket extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div style={this.style.quarterfinals}>Quarterfinals
+                <div style={this.style.sixtyFour}>Quarterfinals
                     <div style={this.style.region}>Next</div>
                     <div>{this.teams.map( team => {
                         return (
@@ -177,7 +191,7 @@ export default class Bracket extends React.Component {
                         )
                     })}
                     </div>
-                </div>is
+                </div>
             </div>
         )
     }

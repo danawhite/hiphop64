@@ -1,23 +1,21 @@
 import React from 'react';
 
-import Group from '../group/Group';
+import Groups from '../group/Group';
 
 export default class Matchup extends React.Component {
     constructor(props) {
         super(props);
-
+        console.log('pairing', props.pairing);
         this.styles = {
             container: {}
         }
     }
-
-    renderMatchup(groupA, groupB) {
+    renderMatchup(pairingA, pairingB) {
         let matchupNodeA = new Group(groupA);
         let matchupNodeB = new Group(groupB);
 
         return [matchupNodeA, matchupNodeB];
     }
-
     render() {
         return (
             <div style={this.styles.container}>

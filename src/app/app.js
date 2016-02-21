@@ -2,7 +2,7 @@ import React from 'react';
 import Firebase from 'firebase';
 
 import Team from './components/matchup-node/MatchupNode';
-import Matchup from './components/matchup/Matchup';
+import Matchup from './components/matchup/matchup';
 
 export default class Bracket extends React.Component {
     constructor(props) {
@@ -83,13 +83,13 @@ export default class Bracket extends React.Component {
             semifinals: {
                 flex: .15,
                 flexDirection: 'column',
-                backgroundColor: 'blue',
+                backgroundColor: 'grey',
                 color: '#333'
             },
             finals: {
                 flex: .3,
                 flexDirection: 'column',
-                backgroundColor: 'cornsilk',
+                backgroundColor: 'grey',
                 color: '#333'
             },
             region: {
@@ -104,10 +104,6 @@ export default class Bracket extends React.Component {
         var ref = new Firebase('http://hiphop64.firebaseio.com');
 
         ref.set({name: 'Dana White'});
-    }
-    createMatchup(teamA, teamB) {
-        var teamA = new Team();
-        var teamB = new Team();
     }
     render() {
         return  (
@@ -179,7 +175,7 @@ export default class Bracket extends React.Component {
                         )
                     })}
                     </div>
-                </div>is
+                </div>
             </div>
         )
     }

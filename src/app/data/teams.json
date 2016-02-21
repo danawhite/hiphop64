@@ -1,8 +1,8 @@
 [
   {
-    "name": "Kentucky",
-    "seed": 2,
-    "region": "East",
+    "name": "N.W.A.",
+    "seed": 1,
+    "region": "Wast",
     "votes": 0
   },
   {
@@ -22,5 +22,5 @@
     "seed": 4,
     "region": "West",
     "votes": 0
-  },
+  }
 ]

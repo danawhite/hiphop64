@@ -6,7 +6,7 @@ import TestUtils from 'react-addons-test-utils';
 
 const GroupCheckbox = require('../components/group-checkbox/GroupCheckbox').default;
 
-describe('GroupCheckbox', () => {
+xdescribe('GroupCheckbox', () => {
     it('changes isChecked to true when selected', () => {
         let checkbox = TestUtils.renderIntoDocument(
             <GroupCheckbox/>

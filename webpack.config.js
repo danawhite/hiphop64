@@ -20,7 +20,7 @@ var common = {
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
-    entry: APP_PATH + '/main.jsx',
+    entry: APP_PATH + '/main.js',
     output: {
         path: BUILD_PATH,
         filename: 'bundle.js'

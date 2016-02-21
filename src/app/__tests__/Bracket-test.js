@@ -1,10 +1,10 @@
-jest.dontMock('../components/bracket/Brakcet');
+jest.dontMock('../components/bracket');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Bracket = require('../components/bracket/Bracket').default;
+const Bracket = require('../components/bracket').default;
 
 let bracket;
 let bracketNode;
@@ -19,5 +19,40 @@ describe('Bracket', () => {
         bracketNode = ReactDOM.findDOMNode(bracket);
 
         expect(bracket).toBeDefined();
+    });
+
+    it('should render matchups for all regions', () => {
+        let region = 'East';
+        let groups = [
+                {
+                    groupName: 'NWA',
+                    region: 'West',
+                    seed: 1
+                },
+                {
+                    groupName: 'ATCQ',
+                    region: 'East',
+                    seed: 2
+                },
+                {
+                    groupName: 'PRT',
+                    region: 'East',
+                    seed: 12
+                },
+                {
+                    groupName: 'EPMD',
+                    region: 'East',
+                    seed: 6
+                }
+        ];
+
+        bracket.getGroupsForRegion(groups, region);
+
+        expect(bracket.getGroupsForRegion(groups, region).length).toEqual(3);
+    });
+
+    it('should get appropriate groups for each region', () => {
+        let region = 'East';
+        //bracket.getGroupsForRegion(groups, region);
     })
  });

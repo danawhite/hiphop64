@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './main.css';
 
-import Bracket from './app';
+import Bracket from './components/bracket';
 
 main();
 
@@ -12,6 +12,6 @@ function main() {
 
     document.body.appendChild(container);
 
-    // returns a reference to component's backing instance (in this case <VideoPlayer/>)
-    ReactDOM.render(<Bracket url="/api/teams"/>, container);
+    // returns a reference to component's backing instance (in this case <Bracket/>)
+    ReactDOM.render(<Bracket/>, container);
 }
