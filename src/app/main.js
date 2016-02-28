@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './main.css';
 
-import Bracket from './components/bracket';
+import Bracket from './components/bracket/bracket';
 
 main();
 

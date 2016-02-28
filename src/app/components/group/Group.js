@@ -5,32 +5,58 @@ import GroupCheckbox from '../group-checkbox/GroupCheckbox';
 export default class Group extends React.Component {
     constructor(props){
         super(props);
+        //console.log(this);
 
         this.style = {
             container: {
                 backgroundColor: '#fafafa',
-                display: 'inline-block',
+                display: 'block',
                 border: '1px solid green',
-                width: 200
+                width: 180,
+                height: 25,
+                verticalAlign: 'center'
+            },
+            nodes: {
+                display: 'inline',
+                paddingLeft: 5,
+                paddingRight: 10
+            },
+            checkbox: {
+                alignSelf: 'flex-end'
             }
-        }
+        };
+
+        this.setSelectedGroup = this.setSelectedGroup.bind(this);
+        //this.handleClick = this.handleClick.bind(this);
     }
-    setName(name) {
-        this.name = name;
+
+    setSelectedGroup(props) {
+        console.log(props);
     }
+
+    //handleClick(event) {
+    //    console.log(event);
+    //    //this.props.onSelected(props);
+    //}
+
     render() {
         return (
             <div style={this.style.container}>
-                <div>{this.props.seed}</div>
-                <div>{this.props.name}</div>
+                <p style={this.style.nodes}>{this.props.seed}</p>
+                <p style={this.style.nodes}>{this.props.name}</p>
+                <input type="checkbox" style={this.style.checkbox}/>
             </div>
         )
     }
 }
 
 Group.propTypes = {
-    seed: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired
+    //seed: React.PropTypes
+    //    .oneOfType([
+    //        React.propTypes.string,
+    //        React.propTypes.number
+    //    ]),
+    //name: React.PropTypes.string
 };
 
 Group.defaultProps = {};

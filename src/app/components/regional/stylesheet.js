@@ -1,14 +1,15 @@
 const styles = {
     container: {
-        flex: .4,
+        display: 'flex',
+        flexDirection: 'row',
         marginBottom: 10,
         paddingTop: 10,
         paddingLeft: 10,
         paddingBottom: 10,
-        paddingRight: 10,
+        paddingRight: 10
     },
     firstLane: {
-        //flex: .4,
+        flex: .4,
         backgroundColor: 'red',
         marginRight: 10,
         paddingLeft: 5,
@@ -16,9 +17,8 @@ const styles = {
         paddingBottom: 5
     },
     secondLane: {
-        //flex: .6,
+        flex: .6,
         backgroundColor: 'green',
-        marginRight: 10,
         paddingLeft: 5,
         paddingTop: 5,
         paddingBottom: 5
@@ -30,7 +30,7 @@ const styles = {
         height: 20
     },
     finalFour: {
-        margin: 'auto'
+        flex: 1
     }
 };
 

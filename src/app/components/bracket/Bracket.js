@@ -1,198 +1,62 @@
-import React from 'react';
-import Firebase from 'firebase';
+import React, {Component} from 'react';
 
+import Region from './../region/region';
+import {regions} from '../../models/data-models';
+import Groups from '../../models/groups';
+import FinalFour from '../final-four/final-four';
 
-//import Group from './components/matchup-node/MatchupNode'
-//import Matchup from './components/matchup/matchup';
+//const {createStore} = Redux;
 
-export default class Bracket extends React.Component {
-    constructor(props) {
+class Bracket extends Component {
+    constructor(props){
         super(props);
-
-        this.teams = [
-            {
-                name: 'Kentucky',
-                seed: 1,
-                region: 'East'
-            },
-            {
-                name: 'Maryland',
-                seed: 16,
-                region: 'West'
-            },
-            {
-                name: 'Kentucky',
-                seed: 1
-            },
-            {
-                name: 'Maryland',
-                seed: 16
-            },
-            {
-                name: 'Kentucky',
-                seed: 1
-            },
-            {
-                name: 'Maryland',
-                seed: 16
-            },
-            {
-                name: 'Kentucky',
-                seed: 1
-            },
-            {
-                name: 'Maryland',
-                seed: 16
-            },
-            {
-                name: 'Kentucky',
-                seed: 1
-            },
-            {
-                name: 'Maryland',
-                seed: 16
-            },
-            {
-                name: 'Kentucky',
-                seed: 1
-            },
-            {
-                name: 'Maryland',
-                seed: 16
-            }
-        ];
+        this.getGroupsForRegion = this.getGroupsForRegion.bind(this);
+        console.log(this);
 
         this.style = {
-            outer: {
-                display: 'flex',
-                flexDirection: 'column',
-                aligItems: 'stretch'
+            bracket: {
+                display: 'flex'
             },
             container: {
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'stretch',
-                justifyContent: 'spaceBetween'
-            },
-            sixtyFour: {
-                flex: .2,
-                flexDirection: 'column',
-                alignItems: 'stretch',
-                backgroundColor: 'grey',
-                color: '#333'
-            },
-            thirtyTwo: {
-                flex: .15,
-                flexDirection: 'column',
-                backgroundColor: 'grey',
-                color: '#333'
-            },
-            finals: {
-                flex: .3,
-                flexDirection: 'column',
-                backgroundColor: 'grey',
-                color: '#333'
+                flex: 1,
+                flexDirection: 'column'
             },
             region: {
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                //flex: .2,
-                backgroundColor: '#ffdd00'
+                flex: .5
             }
         }
     }
 
-    componentWillMount() {
-        var ref = new Firebase('http://hiphop64.firebaseio.com');
-
-        ref.set({name: 'Dana White'});
-    }
-
-    renderRegions() {
-        //regi
-    }
-
-    renderMatchupsForRegion(region) {
-        Regions.filter()
-        return region;
-        return Matchups.filter(matchup => {
-            return matchup[region] === region;
-        })
-
+    getGroupsForRegion(groups, region) {
+        return groups
+            .filter(group => group.region === region)
+            .map( group => group );
     }
 
     render() {
-        return  (
-            <div style={this.style.outer}>
+        return (
+            <div style={this.style.bracket}>
                 <div style={this.style.container}>
-                    <div style={this.style.quarterfinals}>Quarterfinals
-                        <div style={this.style.region}>Next</div>
-                        <div>{this.teams.map( team => {
-                            return (
-                                <div>
-                                    <Matchup/>
-                                </div>
-                            )
-                        })}
-                        </div>
-                    </div>
-                    <div style={this.style.sixtyFour}>Semifinals
-                        <div style={this.style.region}>Next</div>
-                        <div>{this.teams.map( team => {
-                            return (
-                                <div>
-                                    <Matchup/>
-                                </div>
-                            )
-                        })}
-                        </div>
-                    </div>
-                    <div style={this.style.finals}>Finals
-                        <div style={this.style.region}>Next</div>
-                        <div>{this.teams.map( team => {
-                            return (
-                                <div>
-                                    <Matchup/>
-                                </div>
-                            )
-                        })}
-                        </div>
-                    </div>
-                    <div style={this.style.thirtyTwo}>Semifinals
-                        <div style={this.style.region}>Next</div>
-                        <div>{this.teams.map( team => {
-                            return (
-                                <div>
-                                    <Matchup/>
-                                </div>
-                            )
-                        })}
-                        </div>
-                    </div>
-                    <div style={this.style.sixtyFour}>Quarterfinals
-                        <div style={this.style.region}>Next</div>
-                        <div>{this.teams.map( team => {
-                            return (
-                                <div>
-                                    <Matchup/>
-                                </div>
-                            )
-                        })}
-                        </div>
-                    </div>
-                </div>
-                <div style={this.style.sixtyFour}>Quarterfinals
-                    <div style={this.style.region}>Next</div>
-                    <div>{this.teams.map( team => {
+                    {regions.map(region => {
                         return (
-                            <div>
-                                <Matchup/>
-                            </div>
+                            <Region
+                                key={region}
+                                region={region}
+                                groups={this.getGroupsForRegion(Groups, region)}
+                                style={this.style.region}
+                            />
                         )
                     })}
-                    </div>
+                </div>
+                <div>
                 </div>
             </div>
         )
     }
 }
+
+Bracket.propTypes = {
+    field: React.PropTypes.array
+};
+
+export default Bracket;

@@ -1,5 +1,9 @@
-const Regions = () => {
-  return  ['East', 'West', 'Midwest', 'South', 'FinalFour'];
-};
+const Regions = [
+    'East',
+    'West',
+    'Midwest',
+    'South',
+    'FinalFour'
+];
 
 export default Regions;
