@@ -1,4 +1,4 @@
-const Matchups = [
+const Pairings = [
     [1, 16],
     [8, 9],
     [5, 12],
@@ -9,4 +9,4 @@ const Matchups = [
     [2, 15]
 ];
 
-export default Matchups;
+export default Pairings

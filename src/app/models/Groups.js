@@ -1,6 +1,6 @@
 const Groups = [
     {
-        name: "Run-DMC",
+        name: "NWA",
         seed: "1",
         region: "East"
     },

@@ -7,4 +7,8 @@ const matchupStyles = {
     championship: {}
 };
 
-export default matchupStyles;
+const thirtyTwo = {
+    width: 4000
+};
+
+export { thirtyTwo };

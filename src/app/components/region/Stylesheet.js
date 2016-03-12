@@ -34,4 +34,8 @@ const styles = {
     }
 };
 
-export default styles;
+const thirtyTwo = {
+  width: 4000
+};
+
+export { styles, thirtyTwo };

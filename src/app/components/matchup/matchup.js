@@ -3,6 +3,8 @@ import React from 'react';
 import Group from '../group/group';
 import {regionals}  from '../../models/rounds';
 import uuid from 'node-uuid';
+import { thirtyTwo } from './matchup-styles';
+
 
 export default class Matchup extends React.Component {
     constructor(props) {
@@ -28,23 +30,29 @@ export default class Matchup extends React.Component {
             }
         };
 
+
         this.renderMatchupWithGroups = this.renderMatchupWithGroups.bind(this);
         this.renderDefaultMatchup = this.renderDefaultMatchup.bind(this);
-        //this.handleClick = this.handleClick.bind(this);
+        this.onSelected = this.onSelected.bind(this);
     }
 
-    handleClick(event, props) {
-        //console.log(event);
-        //console.log(props);
+    onSelected(group) {
+        console.log('onSetSelected: ${props}', group);
+        this.setState({
+            selected: group
+        }, () => console.log(this.state));
+        this.props.onSelected(group);
     }
 
     renderMatchupWithGroups(matchup) {
         return matchup.map(group => {
+            console.log('group', group);
             return (
                 <Group  key={group.name}
                         name={group.name}
                         seed={group.seed}
                         style={this.styles.firstRound}
+                        onSelected={this.onSelected}
                 />
             )
         })
@@ -72,7 +80,8 @@ export default class Matchup extends React.Component {
 }
 
 Matchup.propTypes = {
-    matchup: React.PropTypes.array
+    matchup: React.PropTypes.array,
+    round: React.PropTypes.string
 };
 
 Matchup.defaultProps = {};

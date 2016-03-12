@@ -1,13 +1,12 @@
-const firstRound = Array.from({length: 8}, () => 'sixtyFour');
+const firstRound = Array.from({length: 8}, (item, index) =>  `64.${index}`) ;
+const secondRound = Array.from({length: 4}, (item, index) => `32.${index}`);
+const sweetSixteen = Array.from({ length: 2 }, (item, index) => `16.${index}`);
+const eliteEight = ['8.0'];
 
 const regionals = [
-    'thirtyTwo',
-    'sweetSixteen',
-    'thirtyTwo',
-    'eliteEight',
-    'thirtyTwo',
-    'sweetSixteen',
-    'thirtyTwo'
+    secondRound,
+    sweetSixteen,
+    eliteEight
 ];
 
 const finalFour = [
@@ -16,4 +15,4 @@ const finalFour = [
     'championship'
 ];
 
-export { firstRound, regionals, finalFour }
+export { firstRound, regionals, secondRound, sweetSixteen, eliteEight, finalFour }

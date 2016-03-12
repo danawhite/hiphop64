@@ -27,21 +27,20 @@ export default class Group extends React.Component {
         };
 
         this.setSelectedGroup = this.setSelectedGroup.bind(this);
-        //this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     setSelectedGroup(props) {
         console.log(props);
     }
 
-    //handleClick(event) {
-    //    console.log(event);
-    //    //this.props.onSelected(props);
-    //}
+    handleClick(props) {
+        this.props.onSelected(this.props);
+    }
 
     render() {
         return (
-            <div style={this.style.container}>
+            <div style={this.style.container} onClick={this.handleClick}>
                 <p style={this.style.nodes}>{this.props.seed}</p>
                 <p style={this.style.nodes}>{this.props.name}</p>
                 <input type="checkbox" style={this.style.checkbox}/>

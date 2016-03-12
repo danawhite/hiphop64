@@ -6,29 +6,42 @@ import Matchup from '../matchup/matchup';
 import Regions from '../../models/regions';
 import Regional from '../regional/regional';
 import FinalFour from '../final-four/final-four';
-import { firstRound, regionals, finalFour} from '../../models/rounds';
-import RegionStyles from './Stylesheet.js'
+import * as Rounds from '../../models/rounds';
+import { styles, thirtyTwo } from './Stylesheet.js'
+
+const style = {
+    flex: 1
+};
 
 export default class Region extends React.Component {
     constructor(props) {
         super(props);
         console.log('Region ', props);
-        this.style = RegionStyles;
+        console.log('Region ', Rounds.firstRound);
+        //this.style = RegionStyles;
 
         this.state = {
             groups: props.groups,
-            matchups: []
+            matchups: [],
+            regionals: []
         };
 
         this.matchups = [];
+        this.regionals = [];
 
         this.getMatchupsFromPairings = this.getMatchupsFromPairings.bind(this);
-        this.createMatchups = this.createMatchups.bind(this);
+        this.getMatchupFromMatchups = this.getMatchupFromMatchups.bind(this);
+        this.createFirstRoundMatchups = this.createFirstRoundMatchups.bind(this);
+        this.createRegionalMatchups = this.createRegionalMatchups.bind(this);
         this.setSelectedGroup = this.setSelectedGroup.bind(this);
         this.renderRegions = this.renderRegions.bind(this);
         this.renderFinalFour = this.renderFinalFour.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.getKeyForMatchup = this.getKeyForMatchup.bind(this);
 
         this.getMatchupsFromPairings(Pairings);
+
+        this.getRegionalMatchupsFromRounds(Rounds.regionals);
     }
 
     componentDidMount() {
@@ -36,11 +49,10 @@ export default class Region extends React.Component {
     }
 
     getMatchupsFromPairings(pairings) {
-        //console.log(pairings);
-        return pairings.reduce(this.createMatchups, []);
+        return pairings.reduce(this.createFirstRoundMatchups, []);
     }
 
-    createMatchups(matchups, pairing) {
+    createFirstRoundMatchups(matchups, pairing) {
         let matchup = [];
 
         pairing.forEach(seed => {
@@ -50,19 +62,40 @@ export default class Region extends React.Component {
                 })
                 .map(group => {
                     matchup.push(group);
-                    //console.log(group, matchup);
                 });
         });
 
         this.matchups.push(matchup);
 
-        //console.log(this.matchups);
-
         return matchups;
     };
 
+    getRegionalMatchupsFromRounds(rounds) {
+        return rounds.reduce(this.createRegionalMatchups, []);
+    }
+
+    createRegionalMatchups(matchups, regional) {
+        regional.forEach(item => {
+            this.regionals.push(item);
+        });
+
+        return matchups;
+    }
+
     setSelectedGroup(matchup) {
-        console.log(`onSelectedGroup ${matchup}`);
+        console.log('setSelectedGroup', matchup);
+    }
+
+    getKeyForMatchup(round) {
+        console.log(`getKeyForMatchups, ${this.props.region}.${round}`);
+        return `${this.props.region}.${round}`
+    }
+
+    getMatchupFromMatchups(matchups, region, round) {
+        let matchupIndex = round.charAt(round.length -1 );
+        console.log(`matchupIndex: ${matchupIndex}`);
+        return matchups
+            .filter((matchup, index) => matchupIndex == index )[0]
     }
 
     renderRegions() {
@@ -70,27 +103,29 @@ export default class Region extends React.Component {
         return Regions
             .filter(region => region !== 'FinalFour' && region === this.props.region)
             .map(region => {
-                console.log(`renderRegions: region ${region}`);
+                //console.log(`renderRegions: region ${region}`);
                 return (
-                    <div>
+                    <div style={style} key={region}>
                         <div ref={ ref => this.firstLane = ref }
-                             style={this.style.firstLane}>
-                            {this.matchups.map(matchup => {
+                             style={styles.firstLane}>
+                            {Rounds.firstRound.map(round => {
                                 return(
-                                    <Matchup key={uuid.v4()}
+                                    <Matchup key={this.getKeyForMatchup(round)}
                                              selected={null}
-                                             matchup={matchup}
+                                             round={round}
+                                             matchup={this.getMatchupFromMatchups(this.matchups, region, round)}
                                     />
                                 )
                             })}
                         </div>
                         <div ref={ ref => this.secondLane = ref }
-                             style={this.style.secondLane}>
-                            {regionals.map(round => {
+                             style={styles.secondLane}>
+                            {this.regionals.map((round) => {
                                 return (
-                                    <Matchup key={uuid.v4()}
-                                             name="default"
+                                    <Matchup key={this.getKeyForMatchup(round)}
                                              selected={null}
+                                             round={round}
+                                             matchup={null}
                                     />
                                 )
                             })}
@@ -110,11 +145,13 @@ export default class Region extends React.Component {
         )
     }
 
-    // matchup[group] = selected
+    handleClick(event) {
+        console.log(event);
+    }
 
     render() {
         return (
-            <div style={this.style.container}>
+            <div style={styles.container}>
                 {this.props.groups.length
                     ? this.renderRegions()
                     : this.renderFinalFour()
