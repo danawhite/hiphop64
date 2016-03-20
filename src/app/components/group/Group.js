@@ -14,7 +14,8 @@ export default class Group extends React.Component {
                 border: '1px solid green',
                 width: 180,
                 height: 25,
-                verticalAlign: 'center'
+                verticalAlign: 'center',
+                cursor: 'pointer'
             },
             nodes: {
                 display: 'inline',

@@ -8,7 +8,8 @@ const styles = {
         paddingRight: 10,
     },
     firstLane: {
-        //flex: .4,
+        display: 'inline-block',
+        width: 200,
         backgroundColor: 'red',
         marginRight: 10,
         paddingLeft: 5,
@@ -16,7 +17,8 @@ const styles = {
         paddingBottom: 5
     },
     secondLane: {
-        //flex: .6,
+        display: 'inline-block',
+        width: 200,
         backgroundColor: 'green',
         marginRight: 10,
         paddingLeft: 5,

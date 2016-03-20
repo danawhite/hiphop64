@@ -150,9 +150,10 @@ export default class Region extends React.Component {
     }
 
     render() {
+        const {groups} = this.props;
         return (
             <div style={styles.container}>
-                {this.props.groups.length
+                {groups.length
                     ? this.renderRegions()
                     : this.renderFinalFour()
                 }

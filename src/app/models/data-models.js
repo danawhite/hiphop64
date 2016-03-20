@@ -1,4 +1,24 @@
-const regions = ['East', 'West', 'FinalFour', 'Midwest', 'South'];
+const regions = [
+    {
+        name: 'East',
+        position: 'upperRight'
+    },
+    {
+        name: 'West',
+        position: 'lowerRight'
+    },
+    {
+        name: 'FinalFour',
+        position: 'middle'
+    }, {
+        name:'Midwest',
+        position: 'lowerLeft'
+    },
+    {
+        name: 'South',
+        position: 'upperLeft'
+    }
+];
 
 const roundSequence = ['thirtyTwo', 'sweetSixteen', 'eliteEight'];
 

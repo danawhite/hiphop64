@@ -12,14 +12,15 @@ class Bracket extends Component {
         super(props);
         this.getGroupsForRegion = this.getGroupsForRegion.bind(this);
         console.log(this);
+        console.log(this.__proto__.constructor.name);
+
 
         this.style = {
             bracket: {
                 display: 'flex'
             },
             container: {
-                flex: 1,
-                flexDirection: 'column'
+                display: 'inline-block'
             },
             region: {
                 flex: .5
@@ -40,9 +41,9 @@ class Bracket extends Component {
                     {regions.map(region => {
                         return (
                             <Region
-                                key={region}
-                                region={region}
-                                groups={this.getGroupsForRegion(Groups, region)}
+                                key={region.name}
+                                region={region.name}
+                                groups={this.getGroupsForRegion(Groups, region.name)}
                                 style={this.style.region}
                             />
                         )
