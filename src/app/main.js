@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import bracketApp from './reducers/bracketApp';
 
 import './main.css';
 
 import Bracket from './components/bracket/bracket';
 
-main();
+const container = document.getElementById('app');
+// const store = createStore(bracketApp);
 
-function main() {
-    const container = document.getElementById('app');
-
-    document.body.appendChild(container);
-
-    // returns a reference to component's backing instance (in this case <Bracket/>)
-    ReactDOM.render(<Bracket/>, container);
-}
+render(
+        /** returns a reference to component's backing instance (in this case <Bracket/>) **/
+        <Bracket/> ,container
+);

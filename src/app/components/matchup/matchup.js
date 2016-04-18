@@ -38,12 +38,11 @@ export default class Matchup extends React.Component {
 
     onSelected(group) {
         console.log('onSelected: ${props}', group);
-        // dispatch redux action to update store
         this.setState({
             selected: group
         }, () => console.log(this.state));
 
-        //this.props.onSelected(group);
+        //this.props.(group);
     }
 
     renderMatchupWithGroups(matchup) {
