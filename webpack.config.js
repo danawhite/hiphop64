@@ -18,7 +18,7 @@ function find() {
 
 var common = {
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     entry: APP_PATH + '/main.js',
     output: {
@@ -37,12 +37,12 @@ var common = {
         loaders: [
             { test: /\.css$/,
                 include: APP_PATH,
-                loader: 'style!css'
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.(js|jsx)$/,
                 include: APP_PATH,
-                loader: 'babel'
+                loader: 'babel-loader'
             }
         ]
     }

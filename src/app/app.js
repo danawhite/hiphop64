@@ -60,45 +60,7 @@ export default class Bracket extends React.Component {
                 seed: 16
             }
         ];
-
-        this.style = {
-            outer: {
-              display: 'flex',
-                flexDirection: 'column',
-                aligItems: 'stretch'
-            },
-            container: {
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'stretch',
-                justifyContent: 'spaceBetween'
-            },
-            quarterfinals: {
-                flex: .2,
-                flexDirection: 'column',
-                alignItems: 'stretch',
-                backgroundColor: 'grey',
-                color: '#333'
-            },
-            semifinals: {
-                flex: .15,
-                flexDirection: 'column',
-                backgroundColor: 'grey',
-                color: '#333'
-            },
-            finals: {
-                flex: .3,
-                flexDirection: 'column',
-                backgroundColor: 'grey',
-                color: '#333'
-            },
-            region: {
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                //flex: .2,
-                backgroundColor: '#ffdd00'
-            }
-        }
+        
     }
     componentWillMount() {
         var ref = new Firebase('http://hiphop64.firebaseio.com');
@@ -107,10 +69,10 @@ export default class Bracket extends React.Component {
     }
     render() {
         return  (
-            <div style={this.style.outer}>
-                <div style={this.style.container}>
-                    <div style={this.style.quarterfinals}>Quarterfinals
-                        <div style={this.style.region}>Next</div>
+            <div style={style.outer}>
+                <div style={style.container}>
+                    <div style={style.quarterfinals}>Quarterfinals
+                        <div style={style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
                                 <div>
@@ -120,8 +82,8 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.semifinals}>Semifinals
-                        <div style={this.style.region}>Next</div>
+                    <div style={style.semifinals}>Semifinals
+                        <div style={style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
                                 <div>
@@ -131,8 +93,8 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.finals}>Finals
-                        <div style={this.style.region}>Next</div>
+                    <div style={style.finals}>Finals
+                        <div style={style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
                                 <div>
@@ -142,8 +104,8 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.semifinals}>Semifinals
-                        <div style={this.style.region}>Next</div>
+                    <div style={style.semifinals}>Semifinals
+                        <div style={style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
                                 <div>
@@ -153,8 +115,8 @@ export default class Bracket extends React.Component {
                         })}
                         </div>
                     </div>
-                    <div style={this.style.quarterfinals}>Quarterfinals
-                        <div style={this.style.region}>Next</div>
+                    <div style={style.quarterfinals}>Quarterfinals
+                        <div style={style.region}>Next</div>
                         <div>{this.teams.map( team => {
                             return (
                                 <div>
@@ -165,8 +127,8 @@ export default class Bracket extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div style={this.style.quarterfinals}>Quarterfinals
-                    <div style={this.style.region}>Next</div>
+                <div style={style.quarterfinals}>Quarterfinals
+                    <div style={style.region}>Next</div>
                     <div>{this.teams.map( team => {
                         return (
                             <div>
@@ -178,5 +140,44 @@ export default class Bracket extends React.Component {
                 </div>
             </div>
         )
+    }
+}
+
+const style = {
+    outer: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch'
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        justifyContent: 'spaceBetween'
+    },
+    quarterfinals: {
+        flex: .2,
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        backgroundColor: 'grey',
+        color: '#333'
+    },
+    semifinals: {
+        flex: .15,
+        flexDirection: 'column',
+        backgroundColor: 'grey',
+        color: '#333'
+    },
+    finals: {
+        flex: .3,
+        flexDirection: 'column',
+        backgroundColor: 'grey',
+        color: '#333'
+    },
+    region: {
+        alignSelf: 'stretch',
+        flexDirection: 'column',
+        //flex: .2,
+        backgroundColor: '#ffdd00'
     }
 }

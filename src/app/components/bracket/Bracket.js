@@ -11,21 +11,6 @@ class Bracket extends Component {
     constructor(props){
         super(props);
         this.getGroupsForRegion = this.getGroupsForRegion.bind(this);
-        console.log(this);
-        console.log(this.__proto__.constructor.name);
-
-
-        this.style = {
-            bracket: {
-                display: 'flex'
-            },
-            container: {
-                display: 'inline-block'
-            },
-            region: {
-                flex: .5
-            }
-        }
     }
 
     getGroupsForRegion(groups, region) {
@@ -36,25 +21,31 @@ class Bracket extends Component {
 
     render() {
         return (
-            <div style={this.style.bracket}>
-                <div style={this.style.container}>
+            <div style={style.bracket}>
+                <div style={style.container}>
                     {regions.map(region => {
                         return (
                             <Region
                                 key={region.name}
                                 region={region.name}
                                 groups={this.getGroupsForRegion(Groups, region.name)}
-                                style={this.style.region}
+                                style={style.region}
                             />
                         )
                     })}
-                </div>
-                <div>
                 </div>
             </div>
         )
     }
 }
+
+const style = {
+    bracket: {
+        color: 'white'
+    },
+    container: {},
+    region: {}
+};
 
 Bracket.propTypes = {
     field: React.PropTypes.array

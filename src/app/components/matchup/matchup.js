@@ -2,7 +2,6 @@ import React from 'react';
 
 import Group from '../group/group';
 import {regionals}  from '../../models/rounds';
-import uuid from 'node-uuid';
 import { thirtyTwo } from './matchup-styles';
 
 
@@ -15,6 +14,7 @@ export default class Matchup extends React.Component {
             selected: null
 
         };
+
         this.styles = {
             container: {
                 paddingTop: 5,
@@ -70,7 +70,7 @@ export default class Matchup extends React.Component {
 
     render() {
         return (
-            <div style={this.styles.container}>
+            <div>
                 {this.props.matchup
                     ? this.renderMatchupWithGroups(this.props.matchup)
                     : this.renderDefaultMatchup()

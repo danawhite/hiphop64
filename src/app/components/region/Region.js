@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'node-uuid';
 
 import Pairings from '../../models/pairings';
 import Matchup from '../matchup/matchup';
