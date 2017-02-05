@@ -9,9 +9,11 @@ import './main.css';
 import Bracket from './components/bracket/bracket';
 
 const container = document.getElementById('app');
-// const store = createStore(bracketApp);
+const store = createStore(bracketApp);
 
 render(
         /** returns a reference to component's backing instance (in this case <Bracket/>) **/
-        <Bracket/> ,container
+        <Provider store={store}>
+            <Bracket/>
+        </Provider> ,container
 );

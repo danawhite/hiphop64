@@ -16,9 +16,9 @@ function find() {
     console.log(__dirname);
 }
 
-var common = {
+const common = {
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['', '.js', '.jsx']
     },
     entry: APP_PATH + '/main.js',
     output: {
@@ -43,13 +43,31 @@ var common = {
                 test: /\.(js|jsx)$/,
                 include: APP_PATH,
                 loader: 'babel-loader'
-            }
+            },
+            { test: /\\.(ttf|eot|svg)$/, loader: "file-loader" },
+
         ]
     }
 };
 
+module.exports = function(env) {
+    return common
+   // if(env === 'production') {
+   //     return common
+   // }
+   //
+   // return Object.assign(
+   //     {},
+   //     common,
+   //     developmentConfig,
+   //     {
+   //         plugins: common.plugins.concat(developmentConfig.plugins)
+   //     }
+   // )
+};
+
 // provides default in the event that we're running Webpack outside of npm
-if(TARGET === 'start' || !TARGET) {
+if(TARGET === 'build' || !TARGET) {
     module.exports = merge(common, {
         devtool: 'eval-source-map',
         plugins: [

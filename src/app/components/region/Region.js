@@ -82,7 +82,7 @@ export default class Region extends React.Component {
     }
 
     setSelectedGroup(matchup) {
-        console.log('setSelectedGroup', matchup);
+        console.log("setSelectedGroup", matchup);
     }
 
     getKeyForMatchup(round) {

@@ -22,7 +22,8 @@ export default class Matchup extends React.Component {
             },
             firstRound: {
                 width: 300,
-                backgroundColor: 'cornsilk'
+                backgroundColor: 'cornsilk',
+                color: 'black'
             },
             secondRound: {
                 width: 500,
@@ -58,6 +59,10 @@ export default class Matchup extends React.Component {
             )
         })
     };
+
+    getTotalVotesForPairing(matchup) {
+        // get totals for each round
+    }
 
     renderDefaultMatchup() {
         return (
