@@ -1,0 +1,43 @@
+exports[`Group renders correctly 1`] = `
+<div
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#ffdd00",
+      "border": "1px solid green",
+      "cursor": "pointer",
+      "display": "block",
+      "height": 25,
+      "verticalAlign": "center",
+      "width": 180,
+    }
+  }>
+  <p
+    style={
+      Object {
+        "display": "inline",
+        "paddingLeft": 5,
+        "paddingRight": 10,
+      }
+    }>
+    14
+  </p>
+  <p
+    style={
+      Object {
+        "display": "inline",
+        "paddingLeft": 5,
+        "paddingRight": 10,
+      }
+    }>
+    Onyx
+  </p>
+  <input
+    style={
+      Object {
+        "alignSelf": "flex-end",
+      }
+    }
+    type="checkbox" />
+</div>
+`;
