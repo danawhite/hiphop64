@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import bracketApp from './reducers/bracketApp';
+import bracketApp from './reducers';
 
 import './main.css';
 
@@ -13,7 +13,7 @@ const store = createStore(bracketApp);
 
 render(
         /** returns a reference to component's backing instance (in this case <Bracket/>) **/
-        <Provider store={store}>
-            <Bracket/>
-        </Provider> ,container
+    <Provider store={store}>
+        <Bracket/>
+    </Provider>,container
 );

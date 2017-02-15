@@ -175,9 +175,10 @@ const style = {
         color: '#333'
     },
     region: {
-        alignSelf: 'stretch',
+        // flex: 1,
+        // alignSelf: 'stretch',
         flexDirection: 'column',
         //flex: .2,
-        backgroundColor: '#ffdd00'
+        backgroundColor: 'green'
     }
 }

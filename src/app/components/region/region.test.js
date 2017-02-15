@@ -1,6 +1,19 @@
 //jest.dontMock('../components/region/region');
 //
-//import React from 'react';
+import React from 'react';
+import Region from './region';
+import renderer from 'react-test-renderer';
+
+describe('Region', () => {
+
+    it('renders correctly', () => {
+        const tree = renderer.create(
+            <Region name="Onyx" position="left" seed="14"/>
+        ).toJSON();
+        expect(tree).toMatchSnapshot()
+    })
+});
+
 //import ReactDOM from 'react-dom';
 //import TestUtils from 'react-addons-test-utils';
 //

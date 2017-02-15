@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { finalFour } from '../../models/Rounds';
 import Matchup from '../matchup/matchup';
 
 export default class FinalFour extends React.Component {
@@ -13,7 +14,8 @@ export default class FinalFour extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                alignContent: 'center'
+                backgroundColor: 'yellow',
+                margin: 10
             }
         }
     }
@@ -21,9 +23,11 @@ export default class FinalFour extends React.Component {
     render() {
         return (
         <div style={this.style.container}>
-            <Matchup/>
-            <Matchup/>
-            <Matchup/>
+            {finalFour.map(round => (
+            <div style={{flexDirection: 'row', justifyContent: 'space-between', margin: 10, backgroundColor: 'aqua'}}>
+                <Matchup key={round}/>
+            </div>
+            ))}
         </div>
         )
     };

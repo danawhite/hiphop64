@@ -1,9 +1,13 @@
-import {combineReducers} from 'redux';
-import createMatchups from './createMatchups';
+import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({
-    createMatchups,
+import matchups from './matchups';
+import votes from './votes';
+import tallyVotes from './tallyVotes';
+
+const bracketApp = combineReducers({
+    matchups,
+    votes,
     tallyVotes
 });
 
-export default rootReducer;
+export default bracketApp;

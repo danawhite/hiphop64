@@ -1,6 +1,13 @@
-export default function matchups() {
-    return [
-        [1, 16],
-        [8, 9]
-    ]
-}
+const matchups = (state = [], action) => {
+    switch(action.type) {
+        case 'ADD_MATCHUP':
+            return {
+                id: action.id,
+                data: {}
+            }
+        default:
+            return state
+    }
+};
+
+export default matchups;

@@ -1,8 +1,10 @@
-import actionTypes from '../actions/actionTypes'
+import ActionTypes from '../actions/actionTypes'
 
-const composeBrackets = (state, action ) => {
+const composeBrackets = (state = [], action ) => {
     switch(action.type) {
-        case actionTypes.COMPOSE_BRACKETS :
+        case ActionTypes.COMPOSE_BRACKETS :
             return;
     }
 };
+
+export default composeBrackets;

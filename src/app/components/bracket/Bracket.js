@@ -1,19 +1,22 @@
 import React, {Component} from 'react';
 
-import Region from './../region/region';
+import Region from '../region/region';
+import RegionContainer from '../region-container/region-container';
 import {regions} from '../../models/data-models';
 import Groups from '../../models/groups';
 import FinalFour from '../final-four/final-four';
+import regionSequence from '../../models/regionSequence';
 
 //const {createStore} = Redux;
 
 class Bracket extends Component {
     constructor(props){
         super(props);
-        this.getGroupsForRegion = this.getGroupsForRegion.bind(this);
+        
+        this.getPairingsForRegion = this.getPairingsForRegion.bind(this);
     }
 
-    getGroupsForRegion(groups, region) {
+    getPairingsForRegion(groups, region) {
         return groups
             .filter(group => group.region === region)
             .map( group => group );
@@ -21,57 +24,52 @@ class Bracket extends Component {
 
     render() {
         return (
-            <div style={style.bracket}>
-                <div style={style.bracketLeft}>
-                    <Region
-                        region="East"
-                        groups={this.getGroupsForRegion(Groups, 'East')}
-                        style={style.region}
-                    />
-                    <Region
-                        region="South"
-                        groups={this.getGroupsForRegion(Groups, 'East')}
-                        style={style.region}
-                    />
-                </div>
-                <div style={style.bracketCenter}>
-                    <Region
-                        region="Final Four"
-                        groups={this.getGroupsForRegion(Groups, 'Final Four')}
-                        style={style.region}
-                    />
-                </div>
-                <div style={style.bracketRight}>
-                    <Region
-                        region="Midwest"
-                        groups={this.getGroupsForRegion(Groups, 'East')}
-                        style={style.region}
-                    />
-                    <Region
-                        region="West"
-                        groups={this.getGroupsForRegion(Groups, 'East')}
-                        style={style.region}
-                    />
-                </div>
+            <div style={styles.bracket}>
+                {regionSequence.map((region, index) => (
+                   <RegionContainer key={index}
+                                    style={styles.upperRight}/>
+                ))}
             </div>
         )
     }
 }
 
-const style = {
+const styles = {
     bracket: {
         display: 'flex',
-        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        backgroundColor: 'pink',
+        margin: 10
+    },
+    upperRight: {
+        // flex: .2,
+        // flexDirection: 'row',
+        // // justifyContent: 'flex-start',
+        // backgroundColor: 'green',
+        // // height: 400,
+        // width: 400,
+        // // margin: 10
+    },
+    upperLeft: {},
+    bracketUpper: {
+        // flex: 1,
+        flexDirection: 'column',
         justifyContent: 'flex-start',
-        color: 'white',
+        backgroundColor: 'orange'
     },
-    container: {
+    bracketMiddle: {
         flex: 1,
+        backgroundColor: 'purple'
     },
-    bracketLeft: {
-
+    bracketLower: {
+        // display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'aqua'
     },
-    region: {}
+    region: {
+        backgroundColor: 'green'
+    }
 };
 
 Bracket.propTypes = {

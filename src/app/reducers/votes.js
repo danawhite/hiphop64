@@ -5,6 +5,7 @@ const votes = (state = [], action) => {
                ...state,
                {
                    groupName: action.groupName,
+                   round: action.round,
                    numVotes: this[action.groupName].numVotes++
                }
            ];
@@ -13,8 +14,13 @@ const votes = (state = [], action) => {
                ...state,
                {
                    groupName: action.groupName,
+                   round: action.round,
                    numVotes: this[action.groupName].numVotes--
                }
            ]
+        default:
+            return state
     }
 };
+
+export default votes;

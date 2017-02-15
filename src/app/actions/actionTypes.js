@@ -7,9 +7,16 @@ export const COMPOSE_BRACKETS = 'composeBrackets';
 export const DESELECT_GROUP = 'DESELECT_GROUP';
 export const SUBMIT_REGISTRATION = 'SUBMIT_REGISTRATION';
 export const SUBMIT_BRACKET = 'SUBMIT_BRACKET';
+// export const COMPOSE_BRACKETS = 'COMPOSE_BRACKETS';
 
 export const MATCHUP_RESULT = {
     SELECTED: 'SELECTED',
     NOT_SELECTED: 'NOT_SELECTED'
 };
+
+export const ActionTypes = {
+    COMPOSE_BRACKETS: 'COMPOSE_BRACKETS'
+};
+
+export default ActionTypes;
 

@@ -1,44 +1,25 @@
 import React from 'react';
 
-import GroupCheckbox from '../group-checkbox/GroupCheckbox';
-
-export default class Group extends React.Component {
-    constructor(props){
-        super(props);
-        //console.log(this);
-
-        this.setSelectedGroup = this.setSelectedGroup.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    setSelectedGroup(props) {
-        console.log(props);
-    }
-
-    handleClick(props) {
-        this.props.onSelected(this.props);
-    }
-
-    render() {
-        return (
-            <div style={style.container} onClick={this.handleClick}>
-                <p style={style.nodes}>{this.props.seed}</p>
-                <p style={style.nodes}>{this.props.name}</p>
-                <input type="checkbox" style={style.checkbox}/>
-            </div>
-        )
-    }
-}
+const Group = ({ seed, name, onSelected }) => (
+    <div style={style.container} onClick={onSelected}>
+        <p style={style.nodes}>{seed}</p>
+        <p style={style.nodes}>{name}</p>
+        <input type="checkbox" style={style.checkbox}/>
+    </div>
+);
 
 const style = {
     container: {
-        backgroundColor: '#ffdd00',
-        display: 'block',
-        border: '1px solid green',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        border: '1px solid gray',
         width: 180,
         height: 25,
-        verticalAlign: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        borderRadius: 2,
     },
     nodes: {
         display: 'inline',
@@ -46,17 +27,23 @@ const style = {
         paddingRight: 10
     },
     checkbox: {
-        alignSelf: 'flex-end'
+        align: 'right'
     }
 };
 
 Group.propTypes = {
-    //seed: React.PropTypes
-    //    .oneOfType([
-    //        React.propTypes.string,
-    //        React.propTypes.number
-    //    ]),
-    //name: React.PropTypes.string
+    seed: React.PropTypes
+       .oneOfType([
+           React.PropTypes.string,
+           React.PropTypes.number
+       ]),
+    name: React.PropTypes.string
 };
 
-Group.defaultProps = {};
+Group.defaultProps = {
+    name: 'Group',
+    seed: '16'
+};
+
+export default Group;
+

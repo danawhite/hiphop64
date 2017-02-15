@@ -5,24 +5,37 @@ import Matchup from '../matchup/matchup';
 import Regions from '../../models/regions';
 import Regional from '../regional/regional';
 import FinalFour from '../final-four/final-four';
-import * as Rounds from '../../models/rounds';
-import { styles, thirtyTwo } from './Stylesheet.js'
+import { Rounds, regionals } from '../../models/rounds';
+import { styles, thirtyTwo } from './Stylesheet.js';
+import matchupSequence from '../../models/matchupSequence';
+import Round from '../round/Round';
 
-const style = {
-    flex: 1
+import { BRACKET_POSITION } from '../../common/constants';
+
+const styleRight = {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    backgroundColor: 'yellow'
+};
+
+const styleLeft = {
+    // flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    backgroundColor: 'orange'
 };
 
 export default class Region extends React.Component {
     constructor(props) {
         super(props);
         console.log('Region ', props);
-        console.log('Region ', Rounds.firstRound);
-        //this.style = RegionStyles;
 
         this.state = {
-            groups: props.groups,
+            groups: props.groups || null,
             matchups: [],
-            regionals: []
+            regionals: [],
+            position: props.position || 'left'
         };
 
         this.matchups = [];
@@ -38,13 +51,16 @@ export default class Region extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.getKeyForMatchup = this.getKeyForMatchup.bind(this);
 
-        this.getMatchupsFromPairings(Pairings);
+        // this.getRegionalMatchupsFromRounds(regionals);
+    }
 
-        this.getRegionalMatchupsFromRounds(Rounds.regionals);
+    componentWillMount() {
+        // if(this.props.region !== 'Final Four') {
+        //     this.getMatchupsFromPairings(Pairings)
+        // };
     }
 
     componentDidMount() {
-        //this.r.style.backgroundColor = 'indianred';
     }
 
     getMatchupsFromPairings(pairings) {
@@ -70,10 +86,12 @@ export default class Region extends React.Component {
     };
 
     getRegionalMatchupsFromRounds(rounds) {
+        console.log('getRegionalMatchupsFromRounds', rounds);
         return rounds.reduce(this.createRegionalMatchups, []);
     }
 
     createRegionalMatchups(matchups, regional) {
+        console.log('createRegionalMatchups', matchups);
         regional.forEach(item => {
             this.regionals.push(item);
         });
@@ -85,9 +103,9 @@ export default class Region extends React.Component {
         console.log("setSelectedGroup", matchup);
     }
 
-    getKeyForMatchup(round) {
+    getKeyForMatchup(round, index) {
         console.log(`getKeyForMatchups, ${this.props.region}.${round}`);
-        return `${this.props.region}.${round}`
+        return `${this.props.region}.${round}.${index}`
     }
 
     getMatchupFromMatchups(matchups, region, round) {
@@ -98,49 +116,20 @@ export default class Region extends React.Component {
     }
 
     renderRegions() {
-        console.log('renderRegions');
         return Regions
             .filter(region => region !== 'FinalFour' && region === this.props.region)
-            .map(region => {
-                //console.log(`renderRegions: region ${region}`);
-                return (
-                    <div style={style} key={region}>
-                        <div ref={ ref => this.firstLane = ref }
-                             style={styles.firstLane}>
-                            {Rounds.firstRound.map(round => {
-                                return(
-                                    <Matchup key={this.getKeyForMatchup(round)}
-                                             selected={null}
-                                             round={round}
-                                             matchup={this.getMatchupFromMatchups(this.matchups, region, round)}
-                                    />
-                                )
-                            })}
-                        </div>
-                        <div ref={ ref => this.secondLane = ref }
-                             style={styles.secondLane}>
-                            {this.regionals.map((round) => {
-                                return (
-                                    <Matchup key={this.getKeyForMatchup(round)}
-                                             selected={null}
-                                             round={round}
-                                             matchup={null}
-                                    />
-                                )
-                            })}
-                        </div>
-                    </div>
-                )
-            });
+            .map(region => this.renderRegion(region));
+
+    }
+
+    renderRegion(region) {
+        console.log('renderRegion', region);
 
     }
 
     renderFinalFour() {
-        console.log('renderFinalFour');
         return (
-            <div>
-                <FinalFour/>
-            </div>
+            <FinalFour/>
         )
     }
 
@@ -151,7 +140,7 @@ export default class Region extends React.Component {
     render() {
         const {groups} = this.props;
         return (
-            <div style={styles.container}>
+            <div>
                 {groups.length
                     ? this.renderRegions()
                     : this.renderFinalFour()

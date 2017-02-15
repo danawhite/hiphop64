@@ -18,7 +18,7 @@ function find() {
 
 const common = {
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     entry: APP_PATH + '/main.js',
     output: {

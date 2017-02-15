@@ -1,9 +1,8 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
 import Group from '../group/group';
-import {regionals}  from '../../models/rounds';
-import { thirtyTwo } from './matchup-styles';
 
+const MARGIN_BOTTOM = 20;
 
 export default class Matchup extends React.Component {
     constructor(props) {
@@ -12,29 +11,15 @@ export default class Matchup extends React.Component {
 
         this.state = {
             selected: null
-
         };
-
-        this.styles = {
-            container: {
-                paddingTop: 5,
-                paddingBottom: 5
-            },
-            firstRound: {
-                width: 300,
-                backgroundColor: 'cornsilk',
-                color: 'black'
-            },
-            secondRound: {
-                width: 500,
-                backgroundColor: 'purple'
-            }
-        };
-
 
         this.renderMatchupWithGroups = this.renderMatchupWithGroups.bind(this);
         this.renderDefaultMatchup = this.renderDefaultMatchup.bind(this);
         this.onSelected = this.onSelected.bind(this);
+    }
+
+    componentDidMount() {
+        this.getCoordinates();
     }
 
     onSelected(group) {
@@ -42,8 +27,6 @@ export default class Matchup extends React.Component {
         this.setState({
             selected: group
         }, () => console.log(this.state));
-
-        //this.props.(group);
     }
 
     renderMatchupWithGroups(matchup) {
@@ -53,37 +36,63 @@ export default class Matchup extends React.Component {
                 <Group  key={group.name}
                         name={group.name}
                         seed={group.seed}
-                        style={this.styles.firstRound}
+                        style={styles.firstRound}
                         onSelected={this.onSelected}
                 />
             )
         })
     };
 
-    getTotalVotesForPairing(matchup) {
-        // get totals for each round
-    }
-
     renderDefaultMatchup() {
+        // render according to matchupSequence
         return (
             <div>
-                <Group style={this.styles.secondRound}/>
-                <Group style={this.styles.secondRound}/>
+                <Group style={styles.secondRound}/>
+                <Group style={styles.secondRound}/>
             </div>
         )
     }
 
+    getCoordinates() {
+        let domNode = ReactDOM.findDOMNode(this.match);
+        this.setState({
+            componentHeight: domNode.clientHeight
+        });
+    }
+
     render() {
+        const { matchup } = this.props;
+
         return (
-            <div>
-                {this.props.matchup
-                    ? this.renderMatchupWithGroups(this.props.matchup)
+            <div style={{marginBottom: MARGIN_BOTTOM}} ref={ref => this.match = ref}>
+                {matchup
+                    ? this.renderMatchupWithGroups(matchup)
                     : this.renderDefaultMatchup()
                 }
             </div>
         )
     }
 }
+
+const styles = {
+    container: {
+        paddingTop: 5,
+        paddingBottom: 5
+    },
+    firstRound: {
+        width: 300,
+        backgroundColor: 'white',
+        color: 'black'
+    },
+    secondRound: {
+        width: 500,
+        backgroundColor: 'yellow'
+    },
+    sweetSixteen: {},
+    eliteEight: {},
+    finalFour: {},
+    championship: {},
+};
 
 Matchup.propTypes = {
     matchup: React.PropTypes.array,
